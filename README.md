@@ -1,6 +1,6 @@
 ## test-task-authorization
 
-[![main-CI](https://github.com/Polt0s//actions/workflows/main.yml/badge.svg)](https://github.com/Polt0s/test-task-authorization/actions/workflows/main.yml)
+[![main-CI](https://github.com/Polt0s/test-task-authorization/actions/workflows/main.yml/badge.svg)](https://github.com/Polt0s/test-task-authorization/actions/workflows/main.yml)
 
 ## Installing
 
