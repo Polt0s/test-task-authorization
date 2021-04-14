@@ -6,3 +6,10 @@ export const addUser = (username) => ({
 });
 
 export const logOut = () => ({ type: 'LOGOUT' });
+
+export const setUsers = (users) => ({
+  type: 'SET_USERS',
+  payload: {
+    users,
+  },
+});

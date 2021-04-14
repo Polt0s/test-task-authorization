@@ -8,11 +8,10 @@ const sendingRemoveUser = () => async (dispatch) => {
       {
         headers: { Authorization: `Token ${token}` },
       });
-    localStorage.removeItem('token');
     dispatch(logOut());
     return response;
   } catch (err) {
-    throw new Error(`Error-${err}`);
+    throw new Error(`Error: ${err}`);
   }
 };
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import InputElements from './InputElement.jsx';
@@ -12,11 +11,6 @@ const SignInForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [isError, changeIsError] = useState('');
-  // const [isSwitching, changeSwitching] = useState('filling');
-
-  // const handleSubmin = () => {
-
-  // };
 
   return (
     <div className="container-fluid">
@@ -39,18 +33,19 @@ const SignInForm = () => {
                 password: yup.string().min(8).max(18).required('You did not enter your password'),
               })
             }
-            onSubmit={(values) => {
+            onSubmit={(values, { resetForm }) => {
               const { username, password } = values;
               dispatch(sendingDataSignInForm(username, password))
-                .then((response) => {
-                  if (response.status !== 200) {
-                    changeIsError('wrong login or password');
-                  }
+                .then(() => {
                   history.push('/menu');
                   return (
                     <Main />
                   );
+                })
+                .catch(() => {
+                  changeIsError('Wrong login or password');
                 });
+              resetForm(values);
             }}
             validateOnMount
           >
@@ -71,7 +66,7 @@ const SignInForm = () => {
                     name="password"
                     type="password"
                   />
-                  <div className="invalid-feedback" style={{ color: 'red' }}>{isError}</div>
+                  <div style={{ color: 'red', textAlign: 'center' }}>{isError}</div>
                 </div>
                 <button type="submit" className="w-100 mb-3 btn btn-primary" disabled={!formik.isValid}>
                   Sign in</button>

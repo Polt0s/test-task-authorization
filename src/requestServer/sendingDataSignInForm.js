@@ -13,7 +13,7 @@ const sendingDataSignInForm = (username, password) => async (dispatch) => {
     }
     return { status: response.status };
   } catch (err) {
-    throw new Error(`Error-${err}`);
+    throw new Error(`Error: ${err}`);
   }
 };
 

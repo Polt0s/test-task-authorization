@@ -1,17 +1,28 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Nav } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  // Redirect,
+  NavLink,
 } from 'react-router-dom';
 import SignInForm from './SignInForm.jsx';
 import Main from './Main.jsx';
+import auth from '../requestServer/authentication.js';
+import sendingRemoveUser from '../requestServer/sendingRemoveUser.js';
 
 const App = () => {
-  const isAuth = useSelector((state) => state.user.isAuth);
+  const isAuth = useSelector((state) => state.stateUser.isAuth);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(sendingRemoveUser());
+  };
+
+  useEffect(() => {
+    dispatch(auth());
+  }, []);
 
   return (
     <Router>
@@ -21,19 +32,17 @@ const App = () => {
             <a className="mr-auto navbar-brand">
               Test-Task-Authorization
           </a>
+            {isAuth
+              && <NavLink to="/"><button type="button" className="btn btn-primary" onClick={handleClick}>Sign out</button></NavLink>}
           </Nav>
           {!isAuth
             && <Switch>
               <Route path="/" component={SignInForm} />
-              {/* <Redirect to="/" push /> */}
             </Switch>
           }
-          {isAuth
-            && <Switch>
-              <Route exact path="/menu" component={Main} />
-              {/* <Redirect to="/menu" push /> */}
-            </Switch>
-          }
+          <Switch>
+            <Route path="/menu" component={Main} />
+          </Switch>
         </div>
       </div>
     </Router>

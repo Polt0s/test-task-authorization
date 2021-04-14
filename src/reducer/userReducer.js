@@ -1,6 +1,7 @@
 const initState = {
   currentUser: {},
   isAuth: false,
+  users: [],
 };
 
 const userReducer = (state = initState, action) => {
@@ -19,6 +20,11 @@ const userReducer = (state = initState, action) => {
         ...state,
         currentUser: {},
         isAuth: false,
+      };
+    case 'SET_USERS':
+      return {
+        ...state,
+        users: action.payload.users,
       };
     default:
       return state;
