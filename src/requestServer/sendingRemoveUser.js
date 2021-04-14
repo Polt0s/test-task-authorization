@@ -4,7 +4,7 @@ import { logOut } from '../actions/index.js';
 const sendingRemoveUser = () => async (dispatch) => {
   const token = localStorage.getItem('token');
   try {
-    const response = await axios.post('http://agile-garden-50413.herokuapp.com/api/token/logout/', null,
+    const response = await axios.post('https://agile-garden-50413.herokuapp.com/api/token/logout/', null,
       {
         headers: { Authorization: `Token ${token}` },
       });

@@ -4,7 +4,7 @@ import { setUsers } from '../actions/index.js';
 const gettingUsers = () => async (dispatch) => {
   const token = localStorage.getItem('token');
   try {
-    const response = await axios.get('http://agile-garden-50413.herokuapp.com/api/users',
+    const response = await axios.get('https://agile-garden-50413.herokuapp.com/api/users',
       {
         headers: { Authorization: `Token ${token}` },
       });

@@ -3,7 +3,7 @@ import { addUser } from '../actions/index.js';
 
 const sendingDataSignInForm = (username, password) => async (dispatch) => {
   try {
-    const response = await axios.post('http://agile-garden-50413.herokuapp.com/api/token/login/', {
+    const response = await axios.post('https://agile-garden-50413.herokuapp.com/api/token/login/', {
       username,
       password,
     });
