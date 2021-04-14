@@ -6,6 +6,7 @@ import {
   Switch,
   Route,
   NavLink,
+  Redirect
 } from 'react-router-dom';
 import SignInForm from './SignInForm.jsx';
 import Main from './Main.jsx';
@@ -41,7 +42,7 @@ const App = () => {
             </Switch>
           }
           <Switch>
-            <Route path="/menu" component={Main} />
+            <Route exact path="/menu" component={Main} />
           </Switch>
         </div>
       </div>

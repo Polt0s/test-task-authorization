@@ -30,7 +30,6 @@ module.exports = {
     open: true,
     port: 9090,
     historyApiFallback: true,
-    publicPath: '/',
   },
   module: {
     rules: [
