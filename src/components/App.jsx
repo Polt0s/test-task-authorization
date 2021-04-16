@@ -6,7 +6,6 @@ import {
   Switch,
   Route,
   NavLink,
-  Redirect
 } from 'react-router-dom';
 import SignInForm from './SignInForm.jsx';
 import Main from './Main.jsx';

@@ -8,7 +8,13 @@ const InputElements = ({ label, ...props }) => {
   return (
     <React.Fragment>
       <label htmlFor={id || name}>{label}</label>
-      <input className="form-control" {...field} {...props} />
+      <input
+        className={
+          meta.error && meta.touched
+            ? 'form-control is-invalid'
+            : 'form-control'
+        }
+        {...field} {...props} />
       {meta.touched && meta.error ? (
         <div className="error" style={{ color: 'red' }}>{meta.error}</div>
       ) : null}
